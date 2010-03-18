@@ -1,0 +1,70 @@
+<table id="meeting_<%=meeting.id%>_details_table" style="width:100%; border-width:1px; border-color:black; border-style:solid;padding:0px">
+	<% if meeting.speaker %>
+		<tr>
+			<td>
+				Speaker: 
+			</td>
+			<td>
+				<%= meeting.speaker  %><br/>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<td style="width:200px">
+			Time: 
+		</td>
+		<td>
+			<%= meeting.time_of_day %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Location: 
+		</td>
+		<td>
+			<%= meeting.location  %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description: 
+		</td>
+		<td>
+			<%= meeting.description  %> 
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			Attendees:
+			<table id="meeting_<%=meeting.id%>_attendees" style="width:100%; border-width:1px; border-color:black; border-style:solid;font-size:smaller">
+				<tr>
+					<td style="width:196px">
+						<span class="table_heading">Name:</span>
+					</td>
+					<td>
+						<span class="table_heading">Email:</span>
+					</td>
+					<td>
+						<span class="table_heading">Needs Pickup?:</span>
+					</td>
+				</tr>
+			<% meeting.attendees.each do |attendee| %>
+				<tr>
+					<td>
+						<%= attendee.name %>
+					</td>
+					<td>
+						<%= attendee.email %>
+					</td>
+					<td>
+						<%= attendee.need_ride %>
+					</td>
+				</tr>
+			<% end %>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<br/>
+

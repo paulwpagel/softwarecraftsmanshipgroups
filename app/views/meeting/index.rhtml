@@ -1,0 +1,32 @@
+<span><%= link_to_remote 'New Meeting', :url => {:controller => 'meeting', :action => 'new_meeting'}, 
+	    								:html => {:id => 'new_meeting'} %></span>
+<span><%= link_to 'Logout', {:controller => 'login', :action => 'logout'}, :id => 'logout' %></span>
+<br/>
+																
+<div id="new_meeting_div"></div>
+<div id="meeting_list">
+	<table style="width:100%;vertical-align:top;">
+		<tr>
+			<td style="width:204px"><span class="table_heading">Title</span></td>
+			<td><span class="table_heading">Date</span></td>
+			<td/>
+		</tr>
+		<% @meetings.each do |meeting| %>
+			<tr>
+				<td><span class="table_subheading"><%= meeting.title %></span></td>
+				<td><%= meeting.pretty_date %></td>
+				<td>
+					<div id ="toggle_<%= meeting.id -%>_details">
+						<%= render :partial => 'meeting/view_details_link' , :locals => {:meeting => meeting} %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='3'>
+					<div id="meeting_<%= meeting.id -%>_details"></div>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+

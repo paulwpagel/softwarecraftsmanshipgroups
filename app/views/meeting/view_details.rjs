@@ -1,0 +1,2 @@
+page.replace_html "meeting_#{@meeting.id}_details", :partial => 'meeting/details', :locals => {:meeting => @meeting}
+page.replace_html "toggle_#{@meeting.id}_details", :partial => 'meeting/hide_details_link', :locals => {:meeting => @meeting}

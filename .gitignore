@@ -1,0 +1,9 @@
+#ignoring
+.svn
+.hg
+.hgignore
+.DS_Store
+*.orig
+log
+*.log
+*.sqlite3

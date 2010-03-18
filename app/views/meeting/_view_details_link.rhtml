@@ -1,0 +1,3 @@
+<%= link_to_remote 'View Details', :url => {:controller => 'meeting', :action => 'view_details', 
+								   :meeting_id => meeting.id}, :html => {:id => "view_details_for_meeting_#{meeting.id}"} %>
+								

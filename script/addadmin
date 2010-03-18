@@ -1,0 +1,47 @@
+#! /usr/bin/env ruby
+require 'optparse'
+
+usage = nil
+ARGV.options do |opts|
+  opts.banner = "Usage: addadmin <username> [options]"
+  opts.separator ""
+  opts.on("")
+  opts.on("-p", "--password=password", String, "Set the password on the command_line.", "Default: password will be typed in standard input") { |v| PASSWORD = v }
+  opts.on("-e", "--environment=environment", String, "Environment (test/development/production)", "Default: defined in config/environment") { |v| ENV['RAILS_ENV'] = v }
+  opts.separator ""
+  usage = opts.to_s
+  opts.on("-h", "--help", "Show this help message.") { puts usage; exit }
+  opts.parse!
+end
+
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require 'admin'
+
+require "digest/sha1"
+
+def create_and_save_admin
+  admin = Admin.new
+  admin.username = ARGV[0]
+	if defined? PASSWORD
+	  admin.password = PASSWORD
+	else
+  	$stdout.write "password: "
+	  psswd = $stdin.readline.chomp 
+	  admin.password = PASSWORD
+  end
+	admin.save!
+	puts "Admin #{admin.username} added"
+end
+
+if ARGV[0] == nil or ARGV[0][0] == "-"[0]
+  puts usage
+  exit(-1)
+end
+
+begin
+	create_and_save_admin
+rescue Exception => e
+	puts e.message
+	exit(-1)
+end
+

@@ -1,0 +1,108 @@
+body {
+	margin: 0px;
+	background-color:black;
+}
+
+td{
+  vertical-align: top;
+}
+
+a{
+  text-decoration:underline;
+  color: #7b2909;
+}
+
+a:hover{
+  color: #7b4740;
+}
+
+a:visited{
+  color: #7b2909;
+}
+
+a:visited:hover {
+  color: #7b4740;
+}
+
+#background {
+  padding-left: 200px;
+}
+
+#header{
+	background-image: url(../images/header.gif);
+	background-repeat: none;
+	height: 280px;
+	width: 990px;
+}
+
+#body {
+	background-image: url(../images/bg8.gif);
+	background-repeat: repeat-y;
+	width: 990px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#footer {
+  margin: 20px 0 20px 200px;
+  text-align: center;
+}
+
+#small_logo {
+  position: relative;
+  top:3px;
+  color:transparent;
+  color:none;
+}
+
+.scroll_top {
+  padding: 17px 0 1px 0;
+	background-image: url(../images/bgscrolltop.gif);
+	background-repeat: no-repeat;
+	background-position: top left;
+	position: relative;
+	top: -35px;
+	width: 600px;
+}
+
+.scroll_bottom{
+  padding-bottom: 15px;
+	background-image: url(../images/bgscrollbottom.gif);
+	background-repeat: no-repeat;
+	background-position: bottom left;
+}
+
+.scroll_middle{
+	padding: 1px 25px 1px 25px;
+	background-image: url(../images/bgscroll.gif);
+	background-repeat: repeat-y;
+	width: 550px;
+}
+
+.table_heading{
+  font-weight: bold;
+  font-size: larger;
+}
+
+.table_subheading{
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/***************************************
+            calendar styles            
+****************************************/
+
+.calendar td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 5px;
+}
+
+.meeting_day {
+	background-color: green;
+}
+
+.special_day {
+	background-color: red;
+}

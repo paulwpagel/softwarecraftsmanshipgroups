@@ -1,0 +1,25 @@
+<% form_tag({:action => "create", :controller => 'meeting'}, {:id => "new_meeting_form"}) do %>
+	<br/>
+	Title: 
+	<%= text_field_tag "title" %>
+	<br/><br/>
+	Description:
+	<%= text_area 'description', 'text' %>
+	<br/><br/>
+	Speaker:
+	<%= text_field_tag "speaker" %>
+	<br/><br/>
+	Location:
+	<%= text_field_tag "location" %>
+	<br/><br/>
+	Date:
+	<%= text_field_tag "date" %>
+	<br/><br/>
+	Time:
+	<%= render :partial => 'shared/time_select', :locals =>{:name => "time_of_day", :minute_interval => 5} %>
+	<br/><br/>
+	<%= submit_tag "Create" %>
+<% end %>
+
+
+

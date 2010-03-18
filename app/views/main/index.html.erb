@@ -1,0 +1,61 @@
+<div id="page_content">
+	
+	<% mtg = Meeting.next_meeting ? Meeting.next_meeting : Meeting.latest_meeting %>
+
+	<h3 style="margin-top:10px"><%= mtg.title %></h3>
+	<% if mtg.speaker %>
+		Speaker: <%= mtg.speaker %><br/><br/>
+	<% end %>
+	<table border="0" width="100%">
+	Our next meeting will be on <%= mtg.pretty_date %> at <%= mtg.time_of_day %>
+		<tr width="100%">
+			<td align="center">
+                   <br/><br/><br/>
+				<p>		
+					The meeting will be held at: <br />
+					<%= mtg.location %>
+				</p>			
+			</td>
+			<td align="center">
+				<pre><%= calendar({:year => mtg.year, :month => mtg.month }) do |d| 
+					cell_text = "#{d.mday}<br />" 
+					cell_attrs = {:class => 'day'} 
+					cell_attrs = {:class => 'meeting_day'} if d.day == mtg.day
+					# cell_attrs = {:class => 'special_day'} if Meeting.upcoming(:month).includes(d.day)
+					[cell_text, cell_attrs] 
+				end %></pre>
+			</td>
+		</tr>
+	</table>
+
+	<%= mtg.description %>
+	<br/><br/>
+	<%= link_to "Join the Software Craftsmanship Google Group", "http://groups.google.com/group/software_craftsmanship?hl=en" -%>
+	<br/>
+	<h3>R.S.V.P.</h3>
+	<% form_remote_tag :url => { :controller => :main, :action => :rsvp} do -%>
+		<table border="0" id="rsvp_form">
+			<tr>
+				<td>Your name:</td>
+				<td>email:</td>
+				<td>Need Pickup?</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><%= text_field_tag "name" %></td>
+				<td><%= text_field_tag "email" %></td>
+				<td style="text-align:center"><%= check_box_tag "need_ride" %></td>
+				<td><%= submit_tag 'RSVP' %></td>
+			</tr>
+		</table>
+	<% end -%>
+
+	<div id="form_errors"></div>
+
+	<ul id="attendee_list">
+		<% mtg.attendees.find(:all).each do |attendee| -%>
+		<li><%= attendee.name %></li>
+		<% end -%>
+	</ul>
+	
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang=en xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Software Craftsmanship</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<%= stylesheet_link_tag :all, :cache => false, :media => "all" %>
+		
+		<%= javascript_include_tag "prototype" %>
+		<%= javascript_include_tag "effects" %>		
+		<%= javascript_include_tag "application" %>
+	</head>
+	<body>
+		<div id="body">
+			<div id="header"></div>
+			<div id="background">
+				<div id="main_content_top" class="scroll_top">
+					<div id="main_content_bottom" class="scroll_bottom">
+						<div id="main_content" class="scroll_middle">
+							<%= @content_for_layout %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer" class="scroll_top">
+				<div class="scroll_bottom">
+					<div class="scroll_middle">
+						<span id="eighth_light_link">
+							<%= link_to "Designed and Hosted by 8th Light", "http://8thlight.com" -%>
+							<%= link_to image_tag("8thlightlogotile.gif"), "http://8thlight.com" , {:id => 'small_logo'} -%>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

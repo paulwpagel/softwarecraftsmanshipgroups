@@ -1,0 +1,9 @@
+if @attendee.error_messages.empty?
+  page.insert_html "bottom", "attendee_list", "<li>#{@attendee.name}</li>"
+  page[:name].value = ''
+  page[:email].value = ''
+  page.replace_html "form_errors", :partial => 'thank_you'
+  page.visual_effect :highlight, 'form_errors'
+else 
+  page.replace_html "form_errors", :partial => 'form_errors'
+end

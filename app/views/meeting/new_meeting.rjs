@@ -1,0 +1,1 @@
+page.replace_html "new_meeting_div", :partial => 'meeting/new_meeting_form'
